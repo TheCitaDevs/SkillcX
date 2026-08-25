@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "description": "Asset Provenance Ledger - Commercial Provenance Tracking for UE5.8.2 Co-op Game",
+  "fields": {
+    "asset_id": {
+      "type": "string",
+      "required": true,
+      "format": "UUID or structured ID (e.g., ASSET_CHAR_001)",
+      "description": "Unique identifier for the asset"
+    },
+    "asset_name": {
+      "type": "string",
+      "required": true,
+      "description": "Human-readable name of the asset"
+    },
+    "creator": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the creator (human or organization)"
+    },
+    "ai_tool_used": {
+      "type": "string",
+      "required": false,
+      "description": "AI model or tool used (e.g., 'Midjourney v6', 'GitHub Copilot', 'None')"
+    },
+    "model_version": {
+      "type": "string",
+      "required": false,
+      "description": "Specific version of the AI/tool used"
+    },
+    "generation_date": {
+      "type": "string",
+      "required": true,
+      "format": "ISO 8601 (YYYY-MM-DDTHH:MM:SSZ)",
+      "description": "Date when the asset was generated/created"
+    },
+    "source": {
+      "type": "string",
+      "required": true,
+      "description": "Origin source (URL, file path, organization, or 'original')"
+    },
+    "license": {
+      "type": "string",
+      "required": true,
+      "description": "License type (e.g., 'MIT', 'CC-BY-4.0', 'Unreal EULA', 'Proprietary', 'UNKNOWN')"
+    },
+    "commercial_use_status": {
+      "type": "string",
+      "required": true,
+      "enum": ["APPROVED", "RESTRICTED", "NOT_APPROVED", "UNKNOWN"],
+      "description": "Commercial use approval status. UNKNOWN automatically means NOT_APPROVED_FOR_SHIPPING"
+    },
+    "modifications": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {"type": "string", "format": "ISO 8601"},
+          "modifier": {"type": "string"},
+          "description": {"type": "string"}
+        }
+      },
+      "description": "List of modifications made to the asset"
+    },
+    "human_approval": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "approved": {"type": "boolean"},
+        "approver": {"type": "string"},
+        "approval_date": {"type": "string", "format": "ISO 8601"},
+        "notes": {"type": "string"}
+      },
+      "description": "Human approval record"
+    },
+    "original_source_files": {
+      "type": "array",
+      "required": false,
+      "items": {"type": "string"},
+      "description": "Paths or URLs to original source files"
+    },
+    "shipping_approval": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "approved": {"type": "boolean"},
+        "approver": {"type": "string"},
+        "approval_date": {"type": "string", "format": "ISO 8601"},
+        "build_number": {"type": "string"},
+        "notes": {"type": "string"}
+      },
+      "description": "Shipping approval record. Auto-rejected if commercial_use_status is UNKNOWN"
+    }
+  },
+  "validation_rules": {
+    "unknown_license_auto_reject": "If license is 'UNKNOWN' or commercial_use_status is 'UNKNOWN', shipping_approval.approved must be false",
+    "required_fields": ["asset_id", "asset_name", "creator", "generation_date", "source", "license", "commercial_use_status", "human_approval", "shipping_approval"],
+    "date_format": "All dates must be ISO 8601 format"
+  }
+}

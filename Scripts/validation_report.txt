@@ -1,0 +1,23 @@
+======================================================================
+ASSET PROVENANCE VALIDATION REPORT
+======================================================================
+Timestamp: 2026-08-25T16:24:10.860176+00:00
+Project: UE5.8.2 Co-op Boss Rush Roguelike
+Schema Version: 1.0
+Total Assets: 1
+
+SHIPPING APPROVAL STATUS:
+  Approved for Shipping: 0
+  Not Approved/Pending:  1
+
+COMMERCIAL USE STATUS:
+  APPROVED:    0
+  RESTRICTED:  0
+  NOT_APPROVED:0
+  UNKNOWN:     1 (AUTO-REJECTED FOR SHIPPING)
+
+AI-GENERATED ASSETS: 0
+
+======================================================================
+VALIDATION PASSED - No blocking errors
+======================================================================
