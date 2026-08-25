@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "ledger_type": "asset_provenance_ledger",
+  "project": "UE5.8.2 Co-op Boss Rush Roguelike",
+  "assets": [
+    {
+      "asset_id": "ASSET_TEMPLATE_001",
+      "asset_name": "Template Asset Entry",
+      "creator": "Unknown",
+      "ai_tool_used": "None",
+      "model_version": "N/A",
+      "generation_date": "2025-01-01T00:00:00Z",
+      "source": "original",
+      "license": "UNKNOWN",
+      "commercial_use_status": "UNKNOWN",
+      "modifications": [],
+      "human_approval": {
+        "approved": false,
+        "approver": "",
+        "approval_date": "",
+        "notes": "Pending review"
+      },
+      "original_source_files": [],
+      "shipping_approval": {
+        "approved": false,
+        "approver": "",
+        "approval_date": "",
+        "build_number": "",
+        "notes": "AUTO-REJECTED: Unknown license status"
+      }
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-01-01T00:00:00Z",
+    "last_modified": "2025-01-01T00:00:00Z",
+    "maintainer": "TBD",
+    "validation_status": "ENABLED"
+  }
+}

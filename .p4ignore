@@ -1,0 +1,209 @@
+# Perforce Ignore Rules for Unreal Engine 5.8.2 Project
+# Revision: UE5.8.2-AI-FIRST-2026-08-25
+# 
+# Purpose: Separate source files, generated files, builds, caches, and large binary assets
+# Rule: Never commit generated build/cache directories or sensitive data
+
+# =============================================================================
+# ALWAYS IGNORE - Generated, Build, Cache, Temporary
+# =============================================================================
+
+# Build outputs
+/Binaries/
+/Intermediate/
+/DerivedDataCache/
+/Saved/
+
+# Visual Studio / IDE generated files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.opensdf
+*.lastbuildstate
+*.shproj.user
+*.xcode/project.xcworkspace/
+*.xcode/xcuserdata/
+/build/
+cmake-build-*/
+
+# Unreal Build Tool cache
+/Build/
+/UAT/
+/Engine/Intermediate/
+/Engine/Binaries/
+/Engine/Saved/
+/Engine/DerivedDataCache/
+
+# Compilation artifacts
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.app
+
+# Shader compilations
+*.ushaderbytecode
+*.usf
+
+# Log files (runtime)
+*.log
+*.txt~
+
+# Swap/backup files
+*~
+*.swp
+*.swo
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+.Spotlight-V100
+.Trashes
+
+# =============================================================================
+# PERFORCE-SPECIFIC METADATA (if using client-side metadata)
+# =============================================================================
+.p4config
+.p4ignore
+
+# =============================================================================
+# SENSITIVE - Never Commit Credentials or Secrets
+# =============================================================================
+
+# API keys, tokens, credentials
+*.key
+*.pem
+*.secret
+.env
+.env.local
+credentials.json
+service-account*.json
+
+# Personal configuration
+/Config/DefaultEditorPerProjectUserSettings.ini
+/Config/DefaultInput.ini
+/Config/*UserSettings*.ini
+
+# =============================================================================
+# LARGE BINARY ASSETS - Use P4 Depot with appropriate file type
+# These should be tracked in Perforce depots, not Git-style workflows
+# =============================================================================
+
+# Content directory binaries (track in P4, not ignored by default)
+# BUT ignore these specific generated subdirectories:
+/Content/Collections/
+/Content/Developers/
+/Content/LocalQuicksaveSlots/
+/Content/LocalSavedGames/
+
+# Compiled shaders
+/Content/Shaders/
+
+# =============================================================================
+# AI/ML GENERATED - Review before commit
+# =============================================================================
+
+# AI model weights (too large for typical source control)
+/AI/Models/*.bin
+/AI/Models/*.ckpt
+/AI/Models/*.safetensors
+/AI/Models/*.pth
+/AI/Models/*.onnx
+
+# AI inference cache
+/AI/Cache/
+/AI/Generated_Temp/
+
+# =============================================================================
+# BLENDER - Source vs Generated
+# =============================================================================
+
+# Keep .blend files (source)
+# Ignore rendered outputs
+*.render
+//renders/
+/compositing/
+
+# =============================================================================
+# DOCUMENTATION - Generated outputs
+# =============================================================================
+
+# Doxygen/Sphinx generated docs
+/docs/_build/
+/html/
+/latex/
+
+# =============================================================================
+# TEST ARTIFACTS
+# =============================================================================
+
+# Test coverage reports
+/coverage/
+*.gcda
+*.gcno
+
+# Automation test results (keep reports, ignore raw dumps)
+/TestResults/Raw/
+
+# =============================================================================
+# PACKAGING / SHIPPING
+# =============================================================================
+
+# Packaged builds (these are artifacts, not source)
+/Packaged/
+/Distribution/
+/Shipping/
+*.pak
+*.pak.sig
+
+# Crash reports
+/Crashes/
+*.dmp
+
+# =============================================================================
+# WHAT TO TRACK IN PERFORCE
+# =============================================================================
+# 
+# SOURCE FILES:
+# - All .cpp, .h files in Source/
+# - All .cs (C# build scripts)
+# - All .uplugin, .uproject files
+# - All .uasset, .umap files (binary content via P4)
+# - All .build.cs files
+# - All .target.cs files
+#
+# CONFIGURATION:
+# - Config/Default*.ini (not UserSettings)
+# - Plugin configurations
+#
+# DOCUMENTATION:
+# - All canonical markdown files (/Canonical/)
+# - Design documents
+# - Technical specifications
+# - This .p4ignore file
+#
+# SCRIPTS:
+# - Python automation scripts
+# - Shell scripts
+# - Batch files
+#
+# ASSETS (with proper P4 filetypes):
+# - Source art files (.blend, .psd, etc.)
+# - Imported assets (.fbx, .wav, .png, etc.)
+# - Data tables
+#
+# DEPENDENCIES:
+# - Third-party plugin source (with license compliance)
+# - Provenance ledger records
+# =============================================================================
